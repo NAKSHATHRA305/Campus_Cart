@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Cart</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    
+    <style>
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 10;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .wishlist-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .wishlist-btn img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.2s;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        .wishlist-btn:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-items">
+            <a class="nav-link">
+                <img src="{{ url_for('static', filename='images/Screenshot 2025-03-03 121813.png') }}" alt="Logo" class="nav-logo">
+            </a>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Products 
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#electronics">Electronics</a></li>
+                    <li><a class="dropdown-item" href="#bags">Bags</a></li>
+                    <li><a class="dropdown-item" href="#stationery">Stationery</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="navbar-icons">
+            <a href="{{ url_for('cart') }}" class="icon-btn">
+                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="Cart" style="width: 24px; height: 24px;">
+            </a>
+            <div class="person">
+                <button class="btn person-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ url_for('static', filename='images/account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png') }}" alt="Account" class="you">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="{{ url_for('orders_page') }}">Orders</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('wishlist') }}">Wishlist</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('address') }}">Addresses</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel/Slideshow -->
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/Amazon_com_ Apple iPad Air.jpg') }}" class="d-block carousel-img" alt="First slide">
+                <div class="carousel-caption">
+                    <h3>Electronics</h3>
+                    <p>Find the latest gadgets and electronics</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/Cyflymder Simple Solid Color Backpack Women Waterproof Nylon School Bags For Teenager Girls Bookbag Lady Travel Backbag Shoulder Bag BACK TO SCHOOL - Black _ 29cm x14cm x38cm.jpg') }}" class="d-block carousel-img" alt="Second slide">
+                <div class="carousel-caption">
+                    <h3>Bags</h3>
+                    <p>Stylish and functional bags for every need</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/Kawaii Pen Shop.jpg') }}" class="d-block carousel-img" alt="Third slide">
+                <div class="carousel-caption">
+                    <h3>Stationery</h3>
+                    <p>Quality stationery for your academic needs</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <section id="electronics" class="product-section">
+        <h2 class="section-title">Electronics</h2>
+        <div class="container">
+            <div class="row justify-content-center">
+                {% for product in electronics %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <button class="wishlist-btn" data-product-id="{{ product._id }}">
+                            <img src="{{ url_for('static', filename='images/heart.png') }}" alt="Add to Wishlist">
+                        </button>
+                        <img src="{{ url_for('static', filename=product.image_url) }}" class="card-img-top product-img" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="price">₹{{ product.price }}</p>
+                            <button class="cart-btn" data-product-id="{{ product._id }}">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="bags" class="product-section">
+        <h2 class="section-title">Bags</h2>
+        <div class="container">
+            <div class="row justify-content-center">
+                {% for product in bags %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <button class="wishlist-btn" data-product-id="{{ product._id }}">
+                            <img src="{{ url_for('static', filename='images/heart.png') }}" alt="Add to Wishlist">
+                        </button>
+                        <img src="{{ url_for('static', filename=product.image_url) }}" class="card-img-top product-img" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="price">₹{{ product.price }}</p>
+                            <button class="cart-btn" data-product-id="{{ product._id }}">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="stationery" class="product-section">
+        <h2 class="section-title">Stationery</h2>
+        <div class="container">
+            <div class="row justify-content-center">
+                {% for product in stationery %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <button class="wishlist-btn" data-product-id="{{ product._id }}">
+                            <img src="{{ url_for('static', filename='images/heart.png') }}" alt="Add to Wishlist">
+                        </button>
+                        <img src="{{ url_for('static', filename=product.image_url) }}" class="card-img-top product-img" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="price">₹{{ product.price }}</p>
+                            <button class="cart-btn" data-product-id="{{ product._id }}">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer align="center">
+        <p>&copy; Clone. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

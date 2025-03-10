@@ -1,0 +1,231 @@
+/* Common styles from index */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #2c3e50 !important;
+}
+
+.nav-link {
+    color: #2c3e50 !important;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    color: #3498db !important;
+}
+
+/* Orders specific styling */
+.card {
+    border: 3px solid #800080;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #800080;
+}
+
+.btn-outline-primary {
+    color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: white;
+}
+
+h1 {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* Order page styles */
+.order-card {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.order-header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-header h5 {
+    margin: 0;
+    color: #333;
+}
+
+.order-body {
+    padding: 20px;
+}
+
+.order-items {
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.order-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.order-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.order-item h6 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.order-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.shipping-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.shipping-info h6 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.shipping-info p {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Total amount section */
+.total-amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+}
+
+.total-amount h5 {
+    margin: 0;
+    color: #333;
+}
+
+/* Empty orders message */
+.no-orders {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .order-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .order-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-item img {
+        margin: 0 0 10px 0;
+    }
+}
+
+/* Match the button styling */
+.cart-btn {
+    background-color: #800080;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.cart-btn:hover {
+    background-color: #660066;
+}
+
+/* Section styling */
+.product-section {
+    padding: 40px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Container styling */
+.orders-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.list-unstyled li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.p-4 {
+    padding: 1.5rem;
+} 
