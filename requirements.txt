@@ -4,3 +4,4 @@ Werkzeug==2.0.1
 flask-pymongo
 python-dotenv
 dnspython  # Required for MongoDB Atlas 
+gunicorn
